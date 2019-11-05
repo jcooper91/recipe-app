@@ -7,11 +7,20 @@
     <title>Boilerplate App</title>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbtotron">
-            <h1>Boilerplate</h1>
+    <div class="container recipe-container">
+        <div class="jumbotron alert alert-primary mt-1">
+            <h2 class="text-center">App</h2>
         </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search Recipes" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <a class="btn btn-outline-secondary bnt-primary" id="createRecipe" type="button">Create Recipe</a>
+            </div>
+        </div>
+        <div id="recipeAlert"></div>
+        <div class="cardContainer"></div>
+        <div class="card text-center" id="recipes"></div>
     </div>
-    <script src="scripts/bundle.js"></script>
+    <script src="scripts/index-bundle.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+.recipe-card__display {
+    display: none;
+}
+
+.card__margin-top {
+    margin-top: 50px;
+}
+
+.recipe-container {
+    max-width: 700px;
+}
