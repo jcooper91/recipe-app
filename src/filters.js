@@ -4,4 +4,11 @@ const filters = {
 
 const getFilters = () => filters
 
-export { getFilters }
+const updateFilters = (updates) => {
+
+    if(typeof updates.searchText === 'string') {
+        filters.searchText = updates.searchText
+    }
+}
+
+export { getFilters, updateFilters }

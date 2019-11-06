@@ -1,5 +1,6 @@
 import moment from 'moment'
 import uuidv4 from 'uuidv4'
+import { alertMessage } from './views'
 
 let recipes = []
 
@@ -30,7 +31,6 @@ const createRecipe = () => {
 
 const updateRecipe = (id, updates) => {
     const recipe = recipes.find((recipe) => id === recipe.recipeId)
-    console.log(recipe)
     if(!recipe) return 
 
     if(typeof updates.title === 'string') {
@@ -47,6 +47,18 @@ const updateRecipe = (id, updates) => {
     return recipe
 }
 
+const removeRecipe = (recipeId) => {
+    const recipeEl = recipes.findIndex((recipe) => recipe.recipeId === recipeId)
+    const confirmRemove = confirm("Are you sure you would like to delete this recipe?")
+    console.log(confirmRemove)
+
+    if(recipeEl > -1 && confirmRemove === true) {
+        recipes.splice(recipeEl, 1)
+        alertMessage(['alert', 'alert-danger'], 'Recipe has been deleted')
+        saveRecipes()
+    }
+}
+
 recipes = loadRecipes()
 
-export { loadRecipes, createRecipe, getRecipes, updateRecipe }
+export { loadRecipes, createRecipe, getRecipes, updateRecipe, removeRecipe }

@@ -11,6 +11,7 @@ const generateRecipeDOM = (recipe) => {
 
     const cardTitle = document.createElement('h5')
     cardTitle.classList.add('card-title', 'recipeTitle')
+
     if(recipe.title.length > 0) {
         cardTitle.textContent = recipe.title
     } else {
@@ -22,8 +23,18 @@ const generateRecipeDOM = (recipe) => {
     const cardLink = document.createElement('a')
     cardLink.classList.add('btn', 'btn-primary')
     cardLink.textContent = 'View Recipe'
+
+    const removeLink = document.createElement('a')
+    removeLink.classList.add('btn', 'btn-danger', 'removeRecipe')
+    removeLink.textContent = 'Remove Recipe'
+
+    cardTitle.insertAdjacentElement('afterend', removeLink)
     cardTitle.insertAdjacentElement('afterend', cardLink)
+    
     cardLink.setAttribute('href', `./edit.html#${recipe.recipeId}`)
+
+    removeLink.setAttribute('href', `#`)
+    removeLink.setAttribute('id', `${recipe.recipeId}`)
 
     return cardEl
 }
@@ -36,17 +47,18 @@ const renderRecipes = () => {
     const recipes = getRecipes()
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
+    recipesEl.innerHTML = ''
+
     if(filteredRecipes.length > 0) {
         filteredRecipes.forEach((recipe) => {
             const newEl = generateRecipeDOM(recipe)
             cardContainerEl.appendChild(newEl)
         })
     } else {
-        const alertEl = document.createElement('div')
-        recipesEl.style.display = 'none'
-        alertEl.classList.add('alert', 'alert-danger', 'text-center')
-        alertEl.textContent = 'There are 0 recipes. Feel are to add one and build up your cooking skills!'
-        recipeAlertEl.appendChild(alertEl)
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No notes to display'
+        emptyMessage.classList.add('empty-message')
+        recipesEl.appendChild(emptyMessage)
     }
 }
 
@@ -64,4 +76,22 @@ const editRecipe = (recipeId) => {
     recipeIngredients.value = recipeEl.list
 }
 
-export { renderRecipes, editRecipe }
+const alertMessage = (className, msg) => {
+    const alertDiv = document.createElement('div')
+    const alertText = document.createElement('p')
+    const alertContainer = document.getElementById('recipeAlert')
+
+    alertDiv.classList.add(...className)
+    alertText.textContent = msg
+    alertDiv.appendChild(alertText)
+    alertContainer.appendChild(alertDiv)
+    removeAlert()
+}
+
+const removeAlert = () => {
+    setTimeout(() => {
+        document.querySelector('#recipeAlert').classList.add('alert-hide')
+    }, 2000)
+}
+
+export { renderRecipes, editRecipe, alertMessage }
