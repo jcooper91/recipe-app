@@ -42,7 +42,6 @@ const updateRecipe = (id, updates) => {
         recipe.list = updates.list
         recipe.updatedAt = moment().valueOf()
     }
-
     saveRecipes()
     return recipe
 }
@@ -50,7 +49,6 @@ const updateRecipe = (id, updates) => {
 const removeRecipe = (recipeId) => {
     const recipeEl = recipes.findIndex((recipe) => recipe.recipeId === recipeId)
     const confirmRemove = confirm("Are you sure you would like to delete this recipe?")
-    console.log(confirmRemove)
 
     if(recipeEl > -1 && confirmRemove === true) {
         recipes.splice(recipeEl, 1)

@@ -13,3 +13,7 @@
 .recipe-container {
     max-width: 700px;
 }
+
+.alert-hide {
+    display: none;
+}

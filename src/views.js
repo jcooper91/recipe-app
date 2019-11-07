@@ -79,18 +79,21 @@ const editRecipe = (recipeId) => {
 const alertMessage = (className, msg) => {
     const alertDiv = document.createElement('div')
     const alertText = document.createElement('p')
-    const alertContainer = document.getElementById('recipeAlert')
+    // const alertContainer = document.createElement('div')
+    const recipesEl = document.getElementById('recipes')
+
 
     alertDiv.classList.add(...className)
+    alertDiv.id = 'alert-message'
     alertText.textContent = msg
     alertDiv.appendChild(alertText)
-    alertContainer.appendChild(alertDiv)
+    recipesEl.insertAdjacentElement('beforebegin', alertDiv)
     removeAlert()
 }
 
 const removeAlert = () => {
     setTimeout(() => {
-        document.querySelector('#recipeAlert').classList.add('alert-hide')
+        const alert = document.getElementById('alert-message').remove()
     }, 2000)
 }
 
