@@ -20,8 +20,13 @@ document.querySelector('#filterRecipes').addEventListener('input', (e) => {
 })
 
 document.querySelector('#recipes').addEventListener('click', (e) => {
-    removeRecipe(e.target.id)
-    renderRecipes()
+    const removeBtn = e.target.closest('a')
+    if(removeBtn.textContent === 'Remove Recipe') {
+        removeRecipe(e.target.id)
+        renderRecipes()
+    } else {
+        return
+    }
 })
 
 

@@ -16,9 +16,23 @@
             <label for="recipeIngredients">Ingredients</label>
             <textarea class="form-control" id="recipeIngredients" rows="3"></textarea>
         </div>
+        <h6><label for="recipeIngredients">How healthy is this meal?</label></h6>
+        <div class="form-group">
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="healthy" class="custom-control-input healthyRadio" value="healthy">
+            <label class="custom-control-label" for="healthy">Healthy</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="mhealthy" name="customRadioInline1" class="custom-control-input healthyRadio" value="mhealthy">
+            <label class="custom-control-label" for="mhealthy">Mildly Healthy</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="unhealthy" name="customRadioInline1" class="custom-control-input healthyRadio" value="unhealthy">
+            <label class="custom-control-label" for="unhealthy">Unhealthy</label>
+        </div>
+        </div>
         <div class="btn-group" role="group" aria-label="Basic example">
             <a href="./index.html" type="submit" class="btn btn-primary submitRecipe">Submit</a>
-            <a href="#" type="submit" class="btn btn-primary removeRecipe">remove</a>
         </div>
     </div>
     <script src="scripts/edit-bundle.js"></script>

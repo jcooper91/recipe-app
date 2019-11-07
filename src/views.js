@@ -79,7 +79,6 @@ const editRecipe = (recipeId) => {
 const alertMessage = (className, msg) => {
     const alertDiv = document.createElement('div')
     const alertText = document.createElement('p')
-    // const alertContainer = document.createElement('div')
     const recipesEl = document.getElementById('recipes')
 
 

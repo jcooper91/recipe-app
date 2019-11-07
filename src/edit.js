@@ -5,7 +5,7 @@ import { editRecipe } from './views'
 
 let recipeName          = document.querySelector('#recipeName')
 let recipeIngredients   = document.querySelector('#recipeIngredients') 
-let removeRecipe        = document.querySelector('.removeRecipe')
+let healthyBtns         = document.querySelector('.healthyRadio')
 const recipeId          = location.hash.substring(1)
 
 editRecipe(recipeId)
@@ -20,6 +20,10 @@ recipeIngredients.addEventListener('input', (e) => {
     updateRecipe(recipeId, {
         list:e.target.value
     })
+})
+
+healthyBtns.addEventListener('click', (e) => {
+    console.log('changed')
 })
 
 window.addEventListener('storage', (e) => {
