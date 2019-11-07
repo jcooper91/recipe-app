@@ -71,7 +71,6 @@ const editRecipe = (recipeId) => {
     if(!recipeEl) {
         location.assign('./index.html')
     }
-    
     recipeTitle.value = recipeEl.title
     recipeIngredients.value = recipeEl.list
 }
@@ -80,7 +79,6 @@ const alertMessage = (className, msg) => {
     const alertDiv = document.createElement('div')
     const alertText = document.createElement('p')
     const recipesEl = document.getElementById('recipes')
-
 
     alertDiv.classList.add(...className)
     alertDiv.id = 'alert-message'
